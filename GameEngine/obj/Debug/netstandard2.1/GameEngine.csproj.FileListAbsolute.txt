@@ -1,0 +1,16 @@
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\bin\Debug\netstandard2.1\GameEngine.deps.json
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\bin\Debug\netstandard2.1\GameEngine.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\bin\Debug\netstandard2.1\GameEngine.pdb
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\obj\Debug\netstandard2.1\GameEngine.AssemblyInfoInputs.cache
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\obj\Debug\netstandard2.1\GameEngine.AssemblyInfo.cs
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\obj\Debug\netstandard2.1\GameEngine.csproj.CoreCompileInputs.cache
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\obj\Debug\netstandard2.1\GameEngine.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\GameEngine\obj\Debug\netstandard2.1\GameEngine.pdb
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\bin\Debug\netstandard2.1\GameEngine.deps.json
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\bin\Debug\netstandard2.1\GameEngine.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\bin\Debug\netstandard2.1\GameEngine.pdb
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.AssemblyInfoInputs.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.AssemblyInfo.cs
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.csproj.CoreCompileInputs.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.pdb
