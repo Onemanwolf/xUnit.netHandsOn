@@ -140,6 +140,7 @@ namespace GameEngine.Test
         }
 
         [Fact]
+        [Trait("Catogory", "HealthTest")]
         public void RaisePropertyChangedEvent()
         {
             Assert.PropertyChanged(_sut, "Health", () => _sut.TakeDamage(10));
@@ -151,6 +152,7 @@ namespace GameEngine.Test
         [InlineData(50, 50)]
         [InlineData(101, 1)]
 
+        [Trait("Catogory", "HealthTest")]
         public void TakeDamage(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);

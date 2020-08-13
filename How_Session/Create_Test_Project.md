@@ -633,8 +633,40 @@ To this:
 > Note
 > You can use Control+. to refactor.
 
-![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
+## Traits
 
+Organizing your test with traits makes grouping test logical in the test explore easier to find and run.
+
+1. We do this with Traits passing in catogories by decorating our test with as demostrated below you can do this on the test method or the classes.
+
+
+```C#
+        [Trait("Catogory", "PlayerCharacter")]
+        public class PlayerCharacterShould
+    {
+```
+
+```C#
+      [Fact]
+      [Trait("Catogory", "HealtTest")]
+        public void IncreasedHealthAfterSleepUsingRange()
+        {
+```
+
+2. Now Build your solution and check the Test Explorer for your new organized Test.
+
+
+## Skip
+
+We skip test if we need to but this should just be a temporary excerise or pratice.
+
+1. We skip test by setting the Fact attribute property with a message string.
+
+```C#
+      [Fact(Skip = "Don't need to run now")]
+```
+
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
 
 ## Return values
 
