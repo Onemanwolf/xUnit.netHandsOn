@@ -927,7 +927,7 @@ We have seen how we can share state across test methods in a test class but what
       public class ColllectionContextShareTest1
     {
 ```
->Note: Notice we didn't not implement an interface like be did before
+>Note: Notice we didn't implement an interface like be did before
 
 
 4. Run test and see that they all have the same Id;
