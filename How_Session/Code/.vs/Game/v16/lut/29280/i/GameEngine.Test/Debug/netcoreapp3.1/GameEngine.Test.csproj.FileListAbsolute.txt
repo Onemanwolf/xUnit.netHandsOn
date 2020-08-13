@@ -1,0 +1,12 @@
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.deps.json
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.runtimeconfig.json
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.runtimeconfig.dev.json
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\b\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.AssemblyInfoInputs.cache
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.AssemblyInfo.cs
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.csproj.CopyComplete
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.dll
+C:\Users\tioleson\source\repos\Xunit\02\demos\before\01AddingTestProject\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.genruntimeconfig.cache
