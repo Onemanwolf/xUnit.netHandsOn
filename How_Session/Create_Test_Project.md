@@ -466,6 +466,8 @@ We know will look a objects creation and type checking.
         }
 ```
 
+3. Now we can test if we can create a Boss passing in boss name and true parameter.
+
 ```C#
         [Fact]
         public void EnemyBossCreated()
@@ -475,12 +477,45 @@ We know will look a objects creation and type checking.
 
             //Act
             var enemy = sut.Create("Zombie King", true);
-            
+
             //Assert
             Assert.IsType<BossEnemy>(enemy);
         }
 ```
 
+4. We can also cast a local var to a type using an assert and then test if the Name property is correct.
+
+```C#
+        [Fact]
+        public void CreateBossEnemy_CastReturnedTypeExample()
+        {
+            //Arrange
+            var sut = new EnemyFactory();
+
+            //Act
+            var enemy = sut.Create("Zombie King", true);
+            var boss = Assert.IsType<BossEnemy>(enemy);
+
+            //Assert
+            Assert.Equal("Zombie King", boss.Name);
+        }
+```
+
+5. We can now test to see if the object we created is from a derived type using the IsAssignableFrom assert.
+
+```C#
+        [Fact]
+        public void CreateBossEnemy_AssertAssignableType()
+        {
+            //Arrange
+            var sut = new EnemyFactory();
+
+            //Act
+            var enemy = sut.Create("Zombie");
+
+            Assert.IsAssignableFrom<Enemy>(enemy);
+        }
+```
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
 
@@ -517,7 +552,7 @@ We know will look a objects creation and type checking.
     "summary": "Chilly"
   }
 ]
-````
+```
 
 ## Add a model class
 
