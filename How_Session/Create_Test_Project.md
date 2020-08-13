@@ -576,6 +576,8 @@ Testing to insure exeception are thrown and or handled.
 
 ```
 
+# Test LifeCycle
+
 ## Refactor Test
 
 We can see that we are breaking the don't repeat yourself principle which can to lead to maintance nighmares so let refactor all the test we have created to be easier to maintain.
@@ -639,7 +641,6 @@ Organizing your test with traits makes grouping test logical in the test explore
 
 1. We do this with Traits passing in catogories by decorating our test with as demostrated below you can do this on the test method or the classes.
 
-
 ```C#
         [Trait("Catogory", "PlayerCharacter")]
         public class PlayerCharacterShould
@@ -655,16 +656,294 @@ Organizing your test with traits makes grouping test logical in the test explore
 
 2. Now Build your solution and check the Test Explorer for your new organized Test.
 
-
 ## Skip
 
 We skip test if we need to but this should just be a temporary excerise or pratice.
 
-1. We skip test by setting the Fact attribute property with a message string.
+1. We can skip test by setting the Fact attribute property with a message string.
 
 ```C#
       [Fact(Skip = "Don't need to run now")]
 ```
+
+## Output
+
+We can have test print out by using the xUnit.Abstractions
+
+```C#
+        using Xunit.Abstractions;
+```
+
+1. Add property of `ITestOutputHelper` to the BossEnemyShould class.
+
+```C#
+       private readonly ITestOutputHelper _output;
+```
+
+2. Now implement in the HaveCorrectPower test method.
+
+```C#
+       public void HaveCorrectPower()
+        {
+            _output.WriteLine("Creating Boss Enemy");
+            Assert.Equal(166.667, _sut.TotalSpecialAttackPower, 3);
+        }
+```
+
+## Context Sharing
+
+We can share instance across all our test in our test class using Fixtures.
+
+1. Right Click on the GameEngine.Tests project and select add class and name it GameStateFixture. Then make the class implement `IDisposable`.
+
+```C#
+         public class GameStateFixture: IDisposable
+    {
+        public GameState State { get; private set; }
+
+        public GameStateFixture()
+        {
+            State = new GameState();
+        }
+
+        public void Dispose()
+        {
+            //Clean up
+        }
+    }
+```
+
+2. Creat new test class name it GameStateShould.
+
+```C#
+          public class GameStateShould
+    {
+          private readonly GameState _sut;
+
+
+        public GameStateShould(ITestOutputHelper output)
+        {
+            _sut = new GameState();
+
+            _output = output;
+        }
+
+        [Fact]
+        public void DamageAllPlayersWhenEarthquake()
+        {
+            _output.WriteLine($"GameState ID={_sut.Id}");
+
+            var player1 = new PlayerCharacter();
+            var player2 = new PlayerCharacter();
+
+            _sut.Players.Add(player1);
+            _sut.Players.Add(player2);
+
+            var expectedHealthAfterEarthquake = player1.Health - GameState.EarthquakeDamage;
+
+            _sut.Earthquake();
+
+            Assert.Equal(expectedHealthAfterEarthquake, player1.Health);
+            Assert.Equal(expectedHealthAfterEarthquake, player2.Health);
+        }
+
+        [Fact]
+        public void Reset()
+        {
+
+
+            var player1 = new PlayerCharacter();
+            var player2 = new PlayerCharacter();
+
+            _sut.Players.Add(player1);
+            _sut.Players.Add(player2);
+
+            _sut.Reset();
+
+            Assert.Empty(_sut.Players);
+        }
+    }
+```
+
+2. Now Implement IClassFixture<T> and add a property GameStateFixture.
+
+```C#
+        public class GameStateShould : IClassFixture<GameStateFixture>
+    {
+        private readonly GameStateFixture _gameStateFixture;
+```
+
+3. Init GameStateFixture in the constructor and remove the \_sut Property and constructor Init.
+
+```C#
+        public GameStateShould(GameStateFixture gameStateFixture,
+                               ITestOutputHelper output)
+        {
+            _gameStateFixture = gameStateFixture;
+
+            _output = output;
+        }
+```
+
+4. We can see the GameStateFixture Id by using a `_output.WriteLine()` to the top of the test method like below;
+
+```C#
+         public void DamageAllPlayersWhenEarthquake()
+        {
+            _output.WriteLine($"GameState ID={_gameStateFixture.State.Id}");
+
+
+
+        public void Reset()
+        {
+            _output.WriteLine($"GameState ID={_gameStateFixture.State.Id}");
+```
+
+5. Now replace all of the `_sut` with the State object using \_gameStateFixture.State like below
+
+From this:
+
+```C#
+
+            _sut.Players.Add(player1);
+            _sut.Players.Add(player2);
+
+```
+
+To this:
+
+```C#
+
+            _gameStateFixture.State.Players.Add(player1);
+            _gameStateFixture.State.Players.Add(player2);
+
+```
+
+> Note: Be aware that this can create potential side effects and break other test.
+
+5. Final revised class
+
+```C#
+       public class GameStateShould : IClassFixture<GameStateFixture>
+    {
+        private readonly GameStateFixture _gameStateFixture;
+        private readonly ITestOutputHelper _output;
+
+        public GameStateShould(GameStateFixture gameStateFixture,
+                               ITestOutputHelper output)
+        {
+            _gameStateFixture = gameStateFixture;
+
+            _output = output;
+        }
+
+        [Fact]
+        public void DamageAllPlayersWhenEarthquake()
+        {
+            _output.WriteLine($"GameState ID={_gameStateFixture.State.Id}");
+
+            var player1 = new PlayerCharacter();
+            var player2 = new PlayerCharacter();
+
+            _gameStateFixture.State.Players.Add(player1);
+            _gameStateFixture.State.Players.Add(player2);
+
+            var expectedHealthAfterEarthquake = player1.Health - GameState.EarthquakeDamage;
+
+            _gameStateFixture.State.Earthquake();
+
+            Assert.Equal(expectedHealthAfterEarthquake, player1.Health);
+            Assert.Equal(expectedHealthAfterEarthquake, player2.Health);
+        }
+
+        [Fact]
+        public void Reset()
+        {
+            _output.WriteLine($"GameState ID={_gameStateFixture.State.Id}");
+
+            var player1 = new PlayerCharacter();
+            var player2 = new PlayerCharacter();
+
+            _gameStateFixture.State.Players.Add(player1);
+            _gameStateFixture.State.Players.Add(player2);
+
+            _gameStateFixture.State.Reset();
+
+            Assert.Empty(_gameStateFixture.State.Players);
+        }
+    }
+```
+
+## Sharing State Across Test
+
+We have seen how we can share state across test methods in a test class but what if we need to share across test class.
+
+1. We can do this but first we need to create a new class right click on the GameEngine.Tests project and select add new class and call it GameStateCollection.
+
+
+```C#
+        [CollectionDefinition("GameState collection")]
+    public class GameStateCollection : ICollectionFixture<GameStateFixture>
+    {
+    }
+```
+
+>We are using an xunit collection and Naming it `GameState collection` as you see we do not have any implementation code it is merely creating a collection definition.
+
+
+2. Now we need two Test classes to share context with so in the test project create two one called ColllectionContextShareTest1 and another called ColllectionContextShareTest2 add this code:
+
+```C#
+        public class ColllectionContextShareTest1
+    {
+        private readonly GameStateFixture _gameStateFixture;
+        private readonly ITestOutputHelper _output;
+
+        public ColllectionContextShareTest1(GameStateFixture gameStateFixture, ITestOutputHelper output)
+        {
+            _gameStateFixture = gameStateFixture;
+            _output = output;
+        }
+
+        [Fact]
+        public void Test1()
+        {
+            _output.WriteLine($"GameState ID= {_gameStateFixture.State.Id}");
+        }
+
+        [Fact]
+        public void Test2()
+        {
+            _output.WriteLine($"GameState ID= {_gameStateFixture.State.Id}");
+        }
+
+    }
+```
+
+3. Now we need to add the collection definition by decorating the class with the collection.
+
+```C#
+      [Collection("GameState collection")]
+      public class ColllectionContextShareTest1
+    {
+```
+>Note: Notice we didn't not implement an interface like be did before
+
+
+4. Run test and see that they all have the same Id;
+
+
+
+# DataDriven
+
+### Test Data Sources
+
+- Inline attribute (Local Developer)
+- Property / field / method (Shareable - Developer)
+- Custom attribute (Shareable Developer)
+- External Data (Sharable across - multiple test cases)
+
+## Inline attribute
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
 

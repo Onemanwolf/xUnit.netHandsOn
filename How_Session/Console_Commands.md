@@ -12,10 +12,13 @@ example
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test>dotnet test
 ```
 
-## Results
+
 
 located <testprojectname>.
    ![alt text](https://github.com/Onemanwolf/xUnit.netHandsOn/blob/master/How_Session/images/Console_Command_Dotnet_Test_Command.png?raw=true 'Request Pipeline')
 # Output
+
+
+dotnet test --filter Category=Enemy
 
 dotnet test --filter Category=Boss --logger:trx
