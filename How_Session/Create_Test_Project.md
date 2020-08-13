@@ -367,7 +367,7 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
-2.  We test to see if a list does not contain an Item or value with Does Not Contain assert.
+2. We test to see if a list does not contain an Item or value with Does Not Contain assert.
 
 ```C#
         [Fact]
@@ -448,7 +448,7 @@ Lets head back over to the PlayerCharacterShould class.
 
 ## Object Types
 
-We know will look a objects creation and type checking.
+We now will look a objects creation and type checking.
 
 1. Right Click on the GameEngine.Tests project and select add class and name it EnemyFactoryShould.
 
@@ -501,7 +501,7 @@ We know will look a objects creation and type checking.
         }
 ```
 
-5. We can now test to see if the object we created is from a derived type using the IsAssignableFrom assert.
+5. We can test to see if the object we created is from a derived type using the IsAssignableFrom assert.
 
 ```C#
         [Fact]
@@ -516,6 +516,124 @@ We know will look a objects creation and type checking.
             Assert.IsAssignableFrom<Enemy>(enemy);
         }
 ```
+
+6. We can test if we have seperate instances of a class using the NotSame assert.
+
+```C#
+        [Fact]
+        public void CreateSeperateInstances()
+        {
+
+            //Arrange
+            var sut = new EnemyFactory();
+
+            //Act
+            var enemy1 = sut.Create("Zombie");
+            var enemy2 = sut.Create("Zombie");
+
+            Assert.NotSame(enemy1, enemy2);
+        }
+```
+
+## Exception
+
+Testing to insure exeception are thrown and or handled.
+
+1. We can test exceptions with Throws assert.
+
+```C#
+        [Fact]
+        public void NotAllowNullName()
+        {
+
+            //Arrange
+            var sut = new EnemyFactory();
+
+            //Act lambda
+
+            //Assert
+            Assert.Throws<ArgumentNullException>(() => sut.Create(null, false));
+        }
+```
+
+2. Testing buisness rule exception are possible with the Throws assert for example we have correct name for Bosses.
+
+```C#
+        [Fact]
+        public void EnemyBossCreatedIsValidName()
+        {
+            //Arrange
+            var sut = new EnemyFactory();
+
+            //Act lambda
+
+            //Assert
+
+          var ex =   Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", true));
+
+
+        }
+
+```
+
+## Refactor Test
+
+We can see that we are breaking the don't repeat yourself principle which can to lead to maintance nighmares so let refactor all the test we have created to be easier to maintain.
+
+1. Lets start with the PlayerCharacterShould class add a property .
+
+```C#
+      private PlayerCharacter _sut;
+```
+
+2. Create a constructor for the test class, at the top of the class type ctor and double tap tab key. We are creating a constructor and going to initialize the systme under test `sut`
+
+```C#
+        public PlayerCharacterShould()
+        {
+            _sut = new PlayerCharacter();
+
+        }
+```
+
+2. Now lets lose all of the newing up of the sut in each test.
+
+Form this:
+
+```C#
+        [Fact]
+        public void CheckFullName()
+        {
+            //Arrange
+            var sut = new PlayerCharacter();
+            //Act
+            sut.FirstName = "Tim";
+            sut.LastName = "Oleson";
+            //Assert
+            Assert.Equal("Tim Oleson", sut.FullName);
+        }
+```
+
+To this:
+
+```C#
+        [Fact]
+        public void CheckFullName()
+        {
+
+            _sut.FirstName = "Tim";
+            _sut.LastName = "Oleson";
+
+            Assert.Equal("Tim Oleson", _sut.FullName);
+        }
+```
+
+3. Now refactor on the rest of the test methods and class we havd created so far and moving forward do this or the rest of the test methods and class we create.
+
+> Note
+> You can use Control+. to refactor.
+
+
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
 
