@@ -2,9 +2,21 @@
 
 [Docs](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test)
 
-1. From the File menu, select New > Project.
-2. Select the ASP.NET Core Web Application template and click Next.
-3. Name the project TodoApi and click Create.
+1. Create folder Open Command Prompt and make dir xUnit.
+
+````console
+C:\Users\tioleson>md xUnit
+
+```
+2. Clone the repo from [xUnit.netHandsOn](https://github.com/Onemanwolf/xUnit.netHandsOn)
+.
+
+3. Once the repo is cloned in the How_Session folder open the Code folder and open the GameEngine.sln with Visual Studio.
+
+4. Now that the solution is open we will add a xUnit Test project by right clicking the GameEngine Solution and select add New Project.
+
+![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Add_Test_Project.png?raw=true 'Request Pipeline')
+
 4. In the Create a new ASP.NET Core Web Application dialog, confirm that .NET Core and ASP.NET Core 3.1 are selected. Select the API template and click Create.
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
@@ -42,7 +54,7 @@
     "summary": "Chilly"
   }
 ]
-```
+````
 
 ## Add a model class
 
