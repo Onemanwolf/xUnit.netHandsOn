@@ -16,7 +16,7 @@ C:\Users\tioleson>md xUnit
 
 4. Now that the solution is open we will add a xUnit Test project by right clicking the GameEngine Solution and select add New Project.
 
-![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/Add_Test_Project.png?raw=true 'Request Pipeline')
+![alt text](https://github.com/Onemanwolf/xUnit.netHandsOn/blob/master/How_Session/images/Add_Test_Project.png?raw=true 'Request Pipeline')
 
 4. In the Create a new ASP.NET Core Web Application dialog, confirm that .NET Core and ASP.NET Core 3.1 are selected. Select the API template and click Create.
 
