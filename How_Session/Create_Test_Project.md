@@ -4,10 +4,11 @@
 
 1. Create folder Open Command Prompt and make dir xUnit.
 
-````console
+```console
 C:\Users\tioleson>md xUnit
 
 ```
+
 2. Clone the repo from [xUnit.netHandsOn](https://github.com/Onemanwolf/xUnit.netHandsOn)
 .
 
