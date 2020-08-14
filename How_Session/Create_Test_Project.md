@@ -351,6 +351,8 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
+## Collections
+
 1. We can check if a list contains a value with the Contains assert.
 
 ```C#
@@ -1113,7 +1115,6 @@ We can create custom attributes by implementing DataAttribute.
         }
 ```
 
-
 ### Custom Attribute External Data
 
 Additional we can create custom attributes that use external data
@@ -1139,8 +1140,6 @@ Additional we can create custom attributes that use external data
          }
 ```
 
-
-
 ```C#
         [Theory]
         [HealthDamageFromCSV]
@@ -1155,6 +1154,5 @@ Additional we can create custom attributes that use external data
 ```
 
 [Jason Roberts](http://dontcodetired.com/blog/post/xUnitnet-Cheat-Sheet)
-
 
 [xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)
