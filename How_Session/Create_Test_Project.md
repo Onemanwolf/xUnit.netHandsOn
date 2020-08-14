@@ -637,7 +637,7 @@ To this:
 
 ## Traits
 
-Organizing your test with traits makes grouping test logical in the test explore easier to find and run.
+Organizing your test with traits makes grouping test logically in the test explore easier to find and run.
 
 1. We do this with Traits passing in catagories by decorating our test with as demonstrated below you can do this on the test method or the classes.
 
@@ -713,7 +713,7 @@ We can share instance across all our test in our test class using Fixtures.
     }
 ```
 
-2. Creat new test class name it GameStateShould.
+2. Create new test class name it GameStateShould.
 
 ```C#
           public class GameStateShould
@@ -887,12 +887,12 @@ We have seen how we can share state across test methods in a test class but what
     }
 ```
 
-> We are using an xunit collection and Naming it `GameState collection` as you see we do not have any implementation code it is merely creating a collection definition.
+> We are using an xUnit collection and Naming it `GameState collection` as you see we do not have any implementation code it is merely creating a collection definition.
 
 2. Now we need two Test classes to share context with so in the test project create two one called CollectionContextShareTest1 and another called CollectionContextShareTest2 add this code:
 
 ```C#
-        public class ColllectionContextShareTest1
+        public class CollectionContextShareTest1
     {
         private readonly GameStateFixture _gameStateFixture;
         private readonly ITestOutputHelper _output;
@@ -947,7 +947,7 @@ From having multiple test like below for each test case:
 
 ```C#
         [Fact]
-        [Trait("Catogory", "HealthTest")]
+        [Trait("Category", "HealthTest")]
         public void TakeDamage()
         {
             _sut.TakeDamage(20);
@@ -1025,7 +1025,7 @@ We can pass in data from properties for a class and use the data to pass into te
 
 1. Create a csv file, right click GameEngine.Tests project and select add a new item add Text file Name it `TestData.csv` after you create the file right click file and got to properties and under copy file change to always to avoid file not found error.
 
-2. Add Data to the comma seperated csv file
+2. Add Data to the comma separated csv file
 
 ```Json
 0,100
@@ -1116,7 +1116,7 @@ We can create custom attributes by implementing DataAttribute.
 
 ### Custom Attribute External Data
 
-Addtional we can create custome attributes that use external data
+Additional we can create custom attributes that use external data
 
 ```C#
         class HealthDamageFromCSVAttribute : DataAttribute
