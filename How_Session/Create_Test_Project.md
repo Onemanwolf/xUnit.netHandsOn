@@ -18,7 +18,7 @@ C:\Users\tioleson>md xUnit
 
 ![alt text](https://github.com/Onemanwolf/xUnit.netHandsOn/blob/master/How_Session/images/Add_Test_Project.png?raw=true 'Request Pipeline')
 
-4. In the Add a new project window type xunit in the top search window
+4. In the Add a new project window type xUnit in the top search window
    and then select xUnit Test Project .Net Core click Next button.
 
 ![alt text](https://github.com/Onemanwolf/xUnit.netHandsOn/blob/master/How_Session/images/Name_Test_Project.png?raw=true 'Request Pipeline')
@@ -79,7 +79,7 @@ C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Te
 
 ## Asserts
 
-How many asserts per test? Should always be just one Assert if you need more look at your code and make sure it is following SOLID principles or right a seperate test for the additoinal Assert.
+How many asserts per test? Should always be just one Assert if you need more look at your code and make sure it is following SOLID principles or right a separate test for the additional Assert.
 
 We will explore the xUnit Assert for dealing common uses cases:
 
@@ -141,7 +141,7 @@ Assert.Null(_sut.NickName)
 Assert.Contains("Long Bow", _sut.Weapons)
 Assert.IsType<BossEnemy>(enemy);
 Assert.NotSame(enemy1, enemy2)
-Assert.Throws<ArgruementNullException>(() => _sut.Create(null));
+Assert.Throws<ArgumentNullException>(() => _sut.Create(null));
 Assert.Raises<EventArgs>(…)
 ```
 
@@ -205,7 +205,7 @@ We have created a Boolean in our first example now lets explore the rest we star
 ```C#
 
         [Fact]
-        public void CheckLastNameEqualsNotCaseSensative()
+        public void CheckLastNameEqualsNotCaseSensitive()
         {
             //Arrange
             var sut = new PlayerCharacter();
@@ -219,7 +219,7 @@ We have created a Boolean in our first example now lets explore the rest we star
 
 ```
 
-5. We can check if a string contains certian character by using contains assert
+5. We can check if a string contains certain character by using contains assert
 
 ```C#
         [Fact]
@@ -274,7 +274,7 @@ Now that we examined strings let look a numeric values and how we can test them
         }
 ```
 
-2. We can check to make sure a value is not zero or not a particalur value with Not Equal Assert
+2. We can check to make sure a value is not zero or not a particular value with Not Equal Assert
 
 ```C#
         [Fact]
@@ -290,7 +290,7 @@ Now that we examined strings let look a numeric values and how we can test them
 
 ## Floating Point and Value
 
-1. Right Click on the GameEnging.Tests project and select add class name the class BossEnemyShould.
+1. Right Click on the GameEngine.Tests project and select add class name the class BossEnemyShould.
 
 2. Now we will add a test precision point on our return value.
 
@@ -360,7 +360,7 @@ Lets head back over to the PlayerCharacterShould class.
 
             //Arrange
             var sut = new PlayerCharacter();
-            //Act Defaualt Values
+            //Act Default Values
 
             //Assert
             Assert.Contains("Long Bow", sut.Weapons);
@@ -375,7 +375,7 @@ Lets head back over to the PlayerCharacterShould class.
         {
             //Arrange
             var sut = new PlayerCharacter();
-            //Act Defaualt Values
+            //Act Default Values
             Assert.DoesNotContain("Staff of Wonder", sut.Weapons);
         }
 ```
@@ -388,7 +388,7 @@ Lets head back over to the PlayerCharacterShould class.
         {
             //Arrange
             var sut = new PlayerCharacter();
-            //Act Defaualt Values
+            //Act Default Values
 
             //Assert
             Assert.Contains(_sut.Weapons, weapons => weapons.Contains("Sword"));
@@ -404,14 +404,14 @@ Lets head back over to the PlayerCharacterShould class.
 
             //Arrange
             var sut = new PlayerCharacter();
-            //Act Defaualt Values
+            //Act Default Values
 
             //Assert
             Assert.All(_sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
         }
 ```
 
-## Rasied Events
+## Raised Events
 
 1. We can check and determine if an event was fired or raised by using th Raises assert.
 
@@ -432,7 +432,7 @@ Lets head back over to the PlayerCharacterShould class.
 
 ```
 
-2. We can see if porterty changed event was fired with the Property Changed assert.
+2. We can see if property changed event was fired with the Property Changed assert.
 
 ```C#
         [Fact]
@@ -448,7 +448,7 @@ Lets head back over to the PlayerCharacterShould class.
 
 ## Object Types
 
-We now will look a objects creation and type checking.
+We now will look at objects creation and type checking.
 
 1. Right Click on the GameEngine.Tests project and select add class and name it EnemyFactoryShould.
 
@@ -517,11 +517,11 @@ We now will look a objects creation and type checking.
         }
 ```
 
-6. We can test if we have seperate instances of a class using the NotSame assert.
+6. We can test if we have separate instances of a class using the NotSame assert.
 
 ```C#
         [Fact]
-        public void CreateSeperateInstances()
+        public void CreateSeparateInstances()
         {
 
             //Arrange
@@ -537,7 +537,7 @@ We now will look a objects creation and type checking.
 
 ## Exception
 
-Testing to insure exeception are thrown and or handled.
+Testing to insure exception are thrown and or handled.
 
 1. We can test exceptions with Throws assert.
 
@@ -556,7 +556,7 @@ Testing to insure exeception are thrown and or handled.
         }
 ```
 
-2. Testing buisness rule exception are possible with the Throws assert for example we have correct name for Bosses.
+2. Testing business rule exception are possible with the Throws assert for example we have correct name for Bosses.
 
 ```C#
         [Fact]
@@ -580,7 +580,7 @@ Testing to insure exeception are thrown and or handled.
 
 ## Refactor Test
 
-We can see that we are breaking the don't repeat yourself principle which can to lead to maintance nighmares so let refactor all the test we have created to be easier to maintain.
+We can see that we are breaking the don't repeat yourself principle which can to lead to maintenance nightmares so let refactor all the test we have created to be easier to maintain.
 
 1. Lets start with the PlayerCharacterShould class add a property.
 
@@ -588,7 +588,7 @@ We can see that we are breaking the don't repeat yourself principle which can to
       private PlayerCharacter _sut;
 ```
 
-2. Create a constructor for the test class, at the top of the class type ctor and double tap tab key. We are creating a constructor and going to initialize the systme under test `sut`.
+2. Create a constructor for the test class, at the top of the class type ctor and double tap tab key. We are creating a constructor and going to initialize the system under test `sut`.
 
 ```C#
         public PlayerCharacterShould()
@@ -598,7 +598,7 @@ We can see that we are breaking the don't repeat yourself principle which can to
         }
 ```
 
-2. Now lets lose all of the newing up of the sut in each test.
+2. Now lets lose all of the new up of the sut in each test.
 
 Form this:
 
@@ -630,7 +630,7 @@ To this:
         }
 ```
 
-3. Now refactor on the rest of the test methods and class we havd created so far and moving forward do this or the rest of the test methods and class we create.
+3. Now refactor on the rest of the test methods and class we have created so far and moving forward do this or the rest of the test methods and class we create.
 
 > Note
 > You can use Control+. to refactor.
@@ -639,17 +639,17 @@ To this:
 
 Organizing your test with traits makes grouping test logical in the test explore easier to find and run.
 
-1. We do this with Traits passing in catogories by decorating our test with as demostrated below you can do this on the test method or the classes.
+1. We do this with Traits passing in catagories by decorating our test with as demonstrated below you can do this on the test method or the classes.
 
 ```C#
-        [Trait("Catogory", "PlayerCharacter")]
+        [Trait("Category", "PlayerCharacter")]
         public class PlayerCharacterShould
     {
 ```
 
 ```C#
       [Fact]
-      [Trait("Catogory", "HealtTest")]
+      [Trait("Category", "HealthTest")]
         public void IncreasedHealthAfterSleepUsingRange()
         {
 ```
@@ -658,7 +658,7 @@ Organizing your test with traits makes grouping test logical in the test explore
 
 ## Skip
 
-We skip test if we need to but this should just be a temporary excerise or pratice.
+We skip test if we need to but this should just be a temporary expertise or practice.
 
 1. We can skip test by setting the Fact attribute property with a message string.
 
@@ -889,7 +889,7 @@ We have seen how we can share state across test methods in a test class but what
 
 > We are using an xunit collection and Naming it `GameState collection` as you see we do not have any implementation code it is merely creating a collection definition.
 
-2. Now we need two Test classes to share context with so in the test project create two one called ColllectionContextShareTest1 and another called ColllectionContextShareTest2 add this code:
+2. Now we need two Test classes to share context with so in the test project create two one called CollectionContextShareTest1 and another called CollectionContextShareTest2 add this code:
 
 ```C#
         public class ColllectionContextShareTest1
@@ -897,7 +897,7 @@ We have seen how we can share state across test methods in a test class but what
         private readonly GameStateFixture _gameStateFixture;
         private readonly ITestOutputHelper _output;
 
-        public ColllectionContextShareTest1(GameStateFixture gameStateFixture, ITestOutputHelper output)
+        public CollectionContextShareTest1(GameStateFixture gameStateFixture, ITestOutputHelper output)
         {
             _gameStateFixture = gameStateFixture;
             _output = output;
@@ -922,7 +922,7 @@ We have seen how we can share state across test methods in a test class but what
 
 ```C#
       [Collection("GameState collection")]
-      public class ColllectionContextShareTest1
+      public class CollectionContextShareTest1
     {
 ```
 
@@ -941,7 +941,7 @@ We have seen how we can share state across test methods in a test class but what
 
 ## InlineData
 
-We can save time and maintance by creating one test method that takes parameter that are passed in to be used by the test rather than writing multiple test methods to test differnet test cases this achived by parameters to test methods as opposed to hard code data we pass it in.
+We can save time and maintenance by creating one test method that takes parameter that are passed in to be used by the test rather than writing multiple test methods to test different test cases this achieved by parameters to test methods as opposed to hard code data we pass it in.
 
 From having multiple test like below for each test case:
 
@@ -964,7 +964,7 @@ To this:
         [InlineData(50, 50)]
         [InlineData(101, 1)]
 
-        [Trait("Catogory", "HealthTest")]
+        [Trait("Category", "HealthTest")]
         public void TakeDamage(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
@@ -1023,7 +1023,7 @@ public class InternalHealthDamageTestData
 
 We can pass in data from properties for a class and use the data to pass into test method to test different test cases.
 
-1. Create a csv file, righ click GameEngine.Tests project and select add a new item add Text file Name it `TestData.csv` after you create the file rigth click file and got to properties and under copy file change to always to avoid file not found error.
+1. Create a csv file, right click GameEngine.Tests project and select add a new item add Text file Name it `TestData.csv` after you create the file right click file and got to properties and under copy file change to always to avoid file not found error.
 
 2. Add Data to the comma seperated csv file
 
