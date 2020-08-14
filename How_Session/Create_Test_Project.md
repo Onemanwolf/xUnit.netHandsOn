@@ -880,7 +880,6 @@ We have seen how we can share state across test methods in a test class but what
 
 1. We can do this but first we need to create a new class right click on the GameEngine.Tests project and select add new class and call it GameStateCollection.
 
-
 ```C#
         [CollectionDefinition("GameState collection")]
     public class GameStateCollection : ICollectionFixture<GameStateFixture>
@@ -888,8 +887,7 @@ We have seen how we can share state across test methods in a test class but what
     }
 ```
 
->We are using an xunit collection and Naming it `GameState collection` as you see we do not have any implementation code it is merely creating a collection definition.
-
+> We are using an xunit collection and Naming it `GameState collection` as you see we do not have any implementation code it is merely creating a collection definition.
 
 2. Now we need two Test classes to share context with so in the test project create two one called ColllectionContextShareTest1 and another called ColllectionContextShareTest2 add this code:
 
@@ -927,12 +925,10 @@ We have seen how we can share state across test methods in a test class but what
       public class ColllectionContextShareTest1
     {
 ```
->Note: Notice we didn't implement an interface like be did before
 
+> Note: Notice we didn't implement an interface like be did before
 
 4. Run test and see that they all have the same Id;
-
-
 
 # DataDriven
 
@@ -943,7 +939,143 @@ We have seen how we can share state across test methods in a test class but what
 - Custom attribute (Shareable Developer)
 - External Data (Sharable across - multiple test cases)
 
-## Inline attribute
+## InlineData
+
+We can save time and maintance by creating one test method that takes parameter that are passed in to be used by the test rather than writing multiple test methods to test differnet test cases this achived by parameters to test methods as opposed to hard code data we pass it in.
+
+From having multiple test like below for each test case:
+
+```C#
+        [Fact]
+        [Trait("Catogory", "HealthTest")]
+        public void TakeDamage()
+        {
+            _sut.TakeDamage(20);
+            Assert.Equal(80, _sut.Health);
+        }
+```
+
+To this:
+
+```C#
+        [Theory]
+        [InlineData(0, 100)] //Test Case Data
+        [InlineData(20, 80)]
+        [InlineData(50, 50)]
+        [InlineData(101, 1)]
+
+        [Trait("Catogory", "HealthTest")]
+        public void TakeDamage(int damage, int expectedHealth)
+        {
+            _sut.TakeDamage(damage);
+            Assert.Equal(expectedHealth, _sut.Health);
+        }
+```
+
+## Property Internal Data
+
+We can pass in data from properties for a class and use the data to pass into test method to test different test cases.
+
+1. We need to create a class to hold our data so right click GameEngine.Tests project and select add a new class name it `InternalHealthDamageTestData`.
+
+2. Add a property TestData and setup the getter with yield return as below:
+
+```C#
+public class InternalHealthDamageTestData
+    {
+
+
+        public static IEnumerable<object[]> TestData
+        {
+
+            get
+            {
+                yield return new object[] { 0, 100 };
+                yield return new object[] { 20, 80 };
+                yield return new object[] { 50, 50 };
+                yield return new object[] { 101, 1 };
+
+            }
+        }
+
+    }
+```
+
+3. Now create a test class that implements our new test data class, right click GameEngine.Tests project and select add class name it NonPlayerCharacterShould.
+
+4. Add test method InternalTakeDamage as seen below:
+
+```C#
+        [Theory]
+        //[MemberData("TestData", MemberType = typeof(InternalHealthDamageTestData))]
+        [MemberData(nameof(InternalHealthDamageTestData.TestData), MemberType = typeof(InternalHealthDamageTestData))]
+        public void InternalTakeDamage(int damage, int expectedHealth)
+        {
+            NonPlayerCharacter sut = new NonPlayerCharacter();
+
+            sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, sut.Health);
+        }
+```
+
+## Property External Data
+
+We can pass in data from properties for a class and use the data to pass into test method to test different test cases.
+
+1. Create a csv file, righ click GameEngine.Tests project and select add a new item add Text file Name it `TestData.csv`
+
+2. Add Data to the comma seperated csv file
+
+```Json
+0,100
+1,99
+50,50
+20,80
+
+```
+
+3. We need to create a class to hold our data so right click GameEngine.Tests project and select add a new class name it `ExternalHealthDamageTestData`.
+
+4. Add a property TestData and setup the getter with io File.ReadAllLines() then parse csv file as below:
+
+```C#
+public class ExternalHealthDamageTestData
+    {
+        public static IEnumerable<object[]> TestData {
+            get{
+                string[] csvLines = File.ReadAllLines("TestData2.csv");
+                var testCases = new List<object[]>();
+                foreach(var csvLine in csvLines)
+                {
+                    IEnumerable<int> values = csvLine.Split(',').Select(int.Parse);
+                    object[] testCase = values.Cast<object>().ToArray();
+                    testCases.Add(testCase);
+                }
+
+
+                return testCases;
+
+            }
+
+        }
+```
+
+5. Add test method InternalTakeDamage as seen below:
+
+```C#
+         [Theory]
+        //[MemberData("TestData", MemberType = typeof(InternalHealthDamageTestData))]
+        [MemberData(nameof(ExternalHealthDamageTestData.TestData), MemberType = typeof(ExternalHealthDamageTestData))]
+        public void ExternalDataSourceTakeDamage(int damage, int expectedHealth)
+        {
+            NonPlayerCharacter sut = new NonPlayerCharacter();
+
+            sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, sut.Health);
+        }
+```
 
 ![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
 
