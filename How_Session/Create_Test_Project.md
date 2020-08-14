@@ -1023,7 +1023,7 @@ public class InternalHealthDamageTestData
 
 We can pass in data from properties for a class and use the data to pass into test method to test different test cases.
 
-1. Create a csv file, righ click GameEngine.Tests project and select add a new item add Text file Name it `TestData.csv`
+1. Create a csv file, righ click GameEngine.Tests project and select add a new item add Text file Name it `TestData.csv` after you create the file rigth click file and got to properties and under copy file change to always to avoid file not found error.
 
 2. Add Data to the comma seperated csv file
 
@@ -1077,8 +1077,82 @@ public class ExternalHealthDamageTestData
         }
 ```
 
-![alt text](https://github.com/Onemanwolf/.Net_Core_Api_Getting_Started/blob/master/Labs/images/CreateANewASPDotNetCoreWebApp.png?raw=true 'Request Pipeline')
+## Custom Attribute
 
-## Return values
+We can create custom attributes by implementing DataAttribute.
+
+1. Create a new class in GameEngine.Test project name it `HealthDamageDataAttribute` implement DataAttribute and override the GetData Method.
+
+2. Add a override Method GetData that returns an `IEnumerable<Object[]>`
+
+```C#
+       public class HealthDamageDataAttribute : DataAttribute
+    {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+            yield return new object[] { 0, 100 };
+            yield return new object[] { 20, 80 };
+            yield return new object[] { 50, 50 };
+            yield return new object[] { 101, 1 };
+        }
+    }
+```
+
+3. Now add a new test method to the NonPlayerCharacterShould class decorate the method with your custom attribute.
+
+```C#
+        [Theory]
+        [HealthDamageData]
+        public void DataAttributeDataSourceTakeDamage(int damage, int expectedHealth)
+        {
+            NonPlayerCharacter sut = new NonPlayerCharacter();
+
+            sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, sut.Health);
+        }
+```
+
+
+### Custom Attribute External Data
+
+Addtional we can create custome attributes that use external data
+
+```C#
+        class HealthDamageFromCSVAttribute : DataAttribute
+        {
+        public override IEnumerable<object[]> GetData(MethodInfo testMethod)
+        {
+
+                string[] csvLines = File.ReadAllLines("TestData.csv");
+                var testCases = new List<object[]>();
+                foreach (var csvLine in csvLines)
+                {
+                    IEnumerable<int> values = csvLine.Split(',').Select(int.Parse);
+                    object[] testCase = values.Cast<object>().ToArray();
+                    testCases.Add(testCase);
+                }
+
+              return testCases;
+
+            }
+         }
+```
+
+
+
+```C#
+        [Theory]
+        [HealthDamageFromCSV]
+        public void DataAttributeDataCSVSourceTakeDamage(int damage, int expectedHealth)
+        {
+            NonPlayerCharacter sut = new NonPlayerCharacter();
+
+            sut.TakeDamage(damage);
+
+            Assert.Equal(expectedHealth, sut.Health);
+        }
+```
+
 
 [EF Core Docs](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio)
