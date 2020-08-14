@@ -1061,7 +1061,7 @@ public class ExternalHealthDamageTestData
         }
 ```
 
-5. Add test method InternalTakeDamage as seen below:
+5. Add test method ExternalDataSourceTakeDamage as seen below:
 
 ```C#
          [Theory]
