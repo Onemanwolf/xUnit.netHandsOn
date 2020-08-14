@@ -1155,4 +1155,4 @@ Addtional we can create custome attributes that use external data
 ```
 
 
-[EF Core Docs](https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio)
+[Jason Roberts](http://dontcodetired.com/blog/post/xUnitnet-Cheat-Sheet)
