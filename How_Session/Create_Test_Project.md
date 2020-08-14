@@ -1154,5 +1154,7 @@ Addtional we can create custome attributes that use external data
         }
 ```
 
-
 [Jason Roberts](http://dontcodetired.com/blog/post/xUnitnet-Cheat-Sheet)
+
+
+[xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)
