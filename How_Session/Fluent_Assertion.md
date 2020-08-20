@@ -35,7 +35,6 @@ actual.Should().StartWith("TH").And.EndWith("NG").And.Contain("AS").And.HaveLeng
 
 We can improve our test by change or Asserts to use Fluent Assertions methods lets get started.
 
-
 ## Bool Asserts with Fluent Assertion
 
 Lets updated our Bool Assert by using .Should().BeTrue().
@@ -50,12 +49,9 @@ We can also check for false Should().BeFalse() as you can see it is very natural
         }
 ```
 
-
 ## Strings Asserts with Fluent Assertion
 
-We have created a Boolean in our first example now lets explore the rest we start with Strings.
-
-1. We can check a strings equality so lets create a test for FullName
+1. We can check a strings equality so lets create a test for FullName with the `.Should().Be()` method.
 
 ```C#
         [Fact]
@@ -71,7 +67,7 @@ We have created a Boolean in our first example now lets explore the rest we star
 
 ```
 
-2. We can test if a string starts with a particular string.
+2. We can test if a string starts with a particular string with `.Should().StartWith()`.
 
 ```C#
         [Fact]
@@ -87,7 +83,7 @@ We have created a Boolean in our first example now lets explore the rest we star
 
 ```
 
-3. We can check if a string ends with a string.
+3. We can check if a string ends with a string by using the `.Should().EndWith()`.
 
 ```C#
         [Fact]
@@ -101,7 +97,7 @@ We have created a Boolean in our first example now lets explore the rest we star
         }
 ```
 
-4. We can ignore case if we need to by passing in the overload of ignoreCase to true
+4. We can ignore case by using the `.Should().BeEquivalentTo()`.
 
 ```C#
 
@@ -118,7 +114,7 @@ We have created a Boolean in our first example now lets explore the rest we star
 
 ```
 
-5. We can check if a string contains certain character by using contains assert
+5. We can check if a string contains certain character by using the `.Should().Contain()`
 
 ```C#
         [Fact]
@@ -134,7 +130,7 @@ We have created a Boolean in our first example now lets explore the rest we star
         }
 ```
 
-6. We can check in a string matches a pattern with regular expression like Title Case
+6. We can check in a string matches a pattern with regular expression like Title Case with the `.Should().MathRegex()`.
 
 ```C#
         [Fact]
@@ -153,7 +149,7 @@ We have created a Boolean in our first example now lets explore the rest we star
 
 Now that we examined strings let look a numeric values and how we can test them
 
-1. We test to see if a value is expected value with equal assert.
+1. We test to see if a value is expected value with by using the `.Should().Be()`.
 
 ```C#
         [Fact]
@@ -164,7 +160,7 @@ Now that we examined strings let look a numeric values and how we can test them
         }
 ```
 
-2. We can check to make sure a value is not zero or not a particular value with Not Equal Assert
+2. We can check to make sure a value is not zero or not a particular value with `.Should().NotBe()` in addition we can provide a because to make the test more intention revealing.
 
 ```C#
         [Fact]
@@ -196,7 +192,7 @@ Now that we examined strings let look a numeric values and how we can test them
 
 Lets head back over to the PlayerCharacterShould class.
 
-1. We can check behavior by testing whether a method is producing the correct value after being called and is in within two values.
+1. We can check behavior by testing whether a method is producing the correct value after being called and is in within two values with `.Should().BeGreaterThan().And.BeLessThan()` we can see the use fo the And constraint in action again here.
 
 ```C#
         [Fact]
@@ -208,7 +204,7 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
-2. Or you can do this using a In Range Assert.
+2. Or you can do this using a In Range with `.Should().BeInRange()`.
 
 ```C#
         [Fact]
@@ -220,7 +216,9 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
-3. We can check in a value is null by using the Null assert.
+3. We can check in a value is null by using the `.Should().BeNull()`.
+
+> Note: As you type you will see that intellisense will suggest what you should use in most cases it is dead on.
 
 ```C#
         [Fact]
@@ -232,9 +230,11 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
+> Note: As you type you will see that intellisense will suggest what you should use in most cases it is dead on.
+
 ## Collections with Fluent Assertion
 
-1. We can check if a list contains a value with the Contains assert.
+1. We can check if a list contains a value with the `.Should().Contain()`.
 
 ```C#
         [Fact]
@@ -249,7 +249,7 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
-2. We test to see if a list does not contain an Item or value with Does Not Contain assert.
+2. We test to see if a list does not contain an Item or value with `.Should().NotContain()` which takes a string as demonstrated below.
 
 ```C#
         [Fact]
@@ -260,7 +260,7 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
-3. We can us lambda arrow functions within Contains assert.
+3. We can us lambda arrow functions within `.Should().Contains()` by passing in a lambda func `x => x.Contains("string")`.
 
 ```C#
         [Fact]
@@ -272,13 +272,12 @@ Lets head back over to the PlayerCharacterShould class.
         }
 ```
 
-4. We can check if all items in a collection whether the are null or whitespace with lambda and All assert.
+4. We can check if all items in a collection whether they are null with `.Should().NotContainNulls()`.
 
 ```C#
         [Fact]
         public void HaveNoEmptyDefaultWeapon()
         {
-
              //Assert.All(_sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
             _sut.Weapons.Should().NotContainNulls();
         }
@@ -331,9 +330,9 @@ Lets head back over to the PlayerCharacterShould class.
 
 We now will look at objects creation and type checking.
 
-1. Right Click on the GameEngine.Tests project and select add class and name it EnemyFactoryShould.
+1. Navigate to EnemyFactoryShould teat class.
 
-2. Now will create a test method to check if the factory return the correct type.
+2. Now we will test to check if the factory return the correct type with `.Should().BeOfType()`.
 
 ```C#
         [Fact]
@@ -346,7 +345,7 @@ We now will look at objects creation and type checking.
         }
 ```
 
-3. Now we can test if we can create a Boss passing in boss name and true parameter.
+3. Now we can test if we can create a Boss passing in boss name and true parameter we can test if the correct type was created `.Should().BeOfType()` we can provide a because to make our test more intention revealing.
 
 ```C#
         [Fact]
@@ -359,7 +358,7 @@ We now will look at objects creation and type checking.
         }
 ```
 
-4. We can also cast a local var to a type using an assert and then test if the Name property is correct.
+4. We can also cast a local var to a type and us it with the `.Should().Equals()`.
 
 ```C#
         [Fact]
@@ -372,7 +371,7 @@ We now will look at objects creation and type checking.
         }
 ```
 
-5. We can test to see if the object we created is from a derived type using the IsAssignableFrom assert.
+5. We can test to see if the object we have created is from a derived type using the `.Should().BeAssignableTo()`.
 
 ```C#
         [Fact]
@@ -386,7 +385,7 @@ We now will look at objects creation and type checking.
         }
 ```
 
-6. We can test if we have separate instances of a class using the NotSame assert.
+6. We can test if we have separate instances of a class using the `.Should().NotBeSameAs()`.
 
 ```C#
         [Fact]
@@ -405,7 +404,7 @@ We now will look at objects creation and type checking.
 
 Testing to insure exception are thrown and or handled.
 
-1. We can test exceptions with Throws assert.
+1. We can test exceptions with the `.Should().Throw` we first we need create a Action delegate and then apply the Fluent Assertion method to the action.
 
 ```C#
         [Fact]
@@ -420,7 +419,7 @@ Testing to insure exception are thrown and or handled.
         }
 ```
 
-2. Testing business rule exception are possible with the Throws assert for example we have correct name for Bosses.
+2. Testing business rule custom exception are possible with the the `.Should().Throw()` again we need create a Action delegate and then apply the Fluent Assertion method to the action.
 
 ```C#
         [Fact]
