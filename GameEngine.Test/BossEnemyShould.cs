@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,7 +27,8 @@ namespace GameEngine.Test
         public void HaveCorrectPower()
         {
             _output.WriteLine("Creating Boss Enemy");
-            Assert.Equal(166.667, _sut.TotalSpecialAttackPower, 3);
+            //Assert.Equal(166.667, _sut.TotalSpecialAttackPower, 3);
+            _sut.TotalSpecialAttackPower.Should().BeApproximately(166.667, .003);
         }
 
         

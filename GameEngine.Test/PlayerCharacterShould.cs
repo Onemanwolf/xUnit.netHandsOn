@@ -1,4 +1,7 @@
+using FluentAssertions;
+using FluentAssertions.Events;
 using System;
+using System.ComponentModel;
 using Xunit;
 
 namespace GameEngine.Test
@@ -20,6 +23,7 @@ namespace GameEngine.Test
 
 
             Assert.True(_sut.IsNoob);
+            _sut.IsNoob.Should().BeTrue();
         }
         [Fact]
         public void CheckFullName()
@@ -28,7 +32,8 @@ namespace GameEngine.Test
             _sut.FirstName = "Tim";
             _sut.LastName = "Oleson";
 
-            Assert.Equal("Tim Oleson", _sut.FullName);
+            //Assert.Equal("Tim Oleson", _sut.FullName);
+            _sut.FullName.Should().Be("Tim Oleson");
         }
 
         [Fact]
@@ -37,7 +42,8 @@ namespace GameEngine.Test
             _sut.FirstName = "Anna";
             _sut.LastName = "Oleson";
 
-            Assert.StartsWith("Anna", _sut.FirstName);
+            //Assert.StartsWith("Anna", _sut.FirstName);
+            _sut.FullName.Should().StartWith("Anna");
 
         }
         [Fact]
@@ -45,7 +51,8 @@ namespace GameEngine.Test
         {
             _sut.FirstName = "Marcela";
             _sut.LastName = "Oleson";
-            Assert.EndsWith("Oleson", _sut.FullName);
+           // Assert.EndsWith("Oleson", _sut.FullName);
+            _sut.FullName.Should().EndWith("Oleson");
         }
 
         [Fact]
@@ -53,97 +60,142 @@ namespace GameEngine.Test
         {
             _sut.FirstName = "Sam";
             _sut.LastName = "Daves";
-            Assert.Equal("DAVES", _sut.LastName, ignoreCase: true);
+           // Assert.Equal("DAVES", _sut.LastName, ignoreCase: true);
+            _sut.LastName.Should().BeEquivalentTo("DAVES");
 
         }
 
         [Fact]
         public void CheckFullNameContains()
         {
-            _sut.FirstName = "Sam";
-            _sut.LastName = "Daves";
-            Assert.Contains("am Da", _sut.FullName);
-
+            _sut.FirstName = "Timmy";
+            _sut.LastName = "Oleson";
+         //   Assert.Contains("mmy Ole", _sut.FullName);
+            _sut.FullName.Should().Contain("mmy Ole");
         }
-        [Fact(Skip = "Don't need to run now")]
+        [Fact]
+        //[Fact(Skip = "Don't need to run now")]
         public void CheckFullNameMatchesTitleCase()
         {
-            _sut.FirstName = "Sam";
-            _sut.LastName = "Daves";
-            Assert.Matches("[A-Z]{1}[a-z]+ [A-z]{1}[a-z]+", _sut.FullName);
-
+            _sut.FirstName = "Timmy";
+            _sut.LastName = "Oleson";
+            //Assert.Matches("[A-Z]{1}[a-z]+ [A-z]{1}[a-z]+", _sut.FullName);
+            _sut.FullName.Should().MatchRegex("[A-Z]{1}[a-z]+ [A-z]{1}[a-z]+");
         }
 
         [Fact]
         public void StartWithDefaultHealth()
         {
-            Assert.Equal(100, _sut.Health);
+            //Assert.Equal(100, _sut.Health);
+            _sut.Health.Should().Be(100);
         }
 
         [Fact]
         public void StartingCharacterHealthNotZero()
         {
-            Assert.NotEqual(0, _sut.Health);
+            //Assert.NotEqual(0, _sut.Health);
+            //To help understand the test when can provide optional becuase as in delow
+            _sut.Health.Should().NotBe(0, because: "Starting health should be 100");
+
         }
 
         [Fact]
         public void IncreasedHealthAfterSleep()
         {
             _sut.Sleep();
-            Assert.True(_sut.Health >=101 && _sut.Health <= 200);
+            //Assert.True(_sut.Health >=101 && _sut.Health <= 200);
+            _sut.Health.Should().BeGreaterThan(101).And.BeLessThan(201);
         }
 
         [Fact]
         public void IncreasedHealthAfterSleepUsingRange()
         {
             _sut.Sleep();
-            Assert.InRange<int>(_sut.Health, 101 , 200);
+           // Assert.InRange<int>(_sut.Health, 101 , 200);
+            _sut.Health.Should().BeInRange(101, 201);
         }
 
         [Fact]
         public void NotHaveNickNameByDefault()
         {
-            Assert.Null(_sut.Nickname);
+            //Assert.Null(_sut.Nickname);
+            _sut.Nickname.Should().BeNull();
         }
 
         [Fact]
         public void HaveALongBow()
         {
-            Assert.Contains("Long Bow", _sut.Weapons);
+          
+           var listOfWeapons = _sut.Weapons;
+
+
+            // Assert.Contains("Long Dow", _sut.Weapons);
+            // you assign local variables an use them in your assert
+            listOfWeapons.Should().Contain("Long Bow");
         }
 
         [Fact]
         public void NotHaveAStaffOfWonder()
         {
-            Assert.DoesNotContain("Staff of Wonder", _sut.Weapons);
+          //  Assert.DoesNotContain("Staff of Wonder", _sut.Weapons);
+            _sut.Weapons.Should().NotContain("Staff of Wonder");
         }
 
         [Fact]
         public void HaveAtLeastOneKindOfSword()
         {
-            Assert.Contains(_sut.Weapons, weapons => weapons.Contains("Sword"));
+            //Assert.Contains(_sut.Weapons, weapons => weapons.Contains("Sword"));
+            _sut.Weapons.Should().Contain(weapons => weapons.Contains("Sword"));
+
         }
 
         [Fact]
         public void HaveNoEmptyDefaultWeapon()
         {
             Assert.All(_sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
+            _sut.Weapons.Should().NotContainNulls();
         }
 
         [Fact]
         public void RaiseSleptEvent()
         {
-            Assert.Raises<EventArgs>(
-                handler => _sut.PlayerSlept += handler,
-                handler => _sut.PlayerSlept -= handler, 
-                () => _sut.Sleep());
+            //Assert.Raises<EventArgs>(
+            //    handler => _sut.PlayerSlept += handler,
+            //    handler => _sut.PlayerSlept -= handler, 
+            //    () => _sut.Sleep());
+
+            // Fluent Assertions use a Monitor to check Events
+            using (var monitoredSubject = _sut.Monitor())
+            {
+                _sut.Sleep();
+                monitoredSubject.Should().Raise("PlayerSlept");
+            }
+            
         }
+
+        [Fact]
+        public void ExameString()
+        {
+            string actual = "THISISASTRING";
+            actual.Should().StartWith("TH").And.EndWith("NG").And.Contain("AS").And.HaveLength(12);
+        }
+
 
         [Fact]
         [Trait("Catogory", "HealthTest")]
         public void RaisePropertyChangedEvent()
         {
-            Assert.PropertyChanged(_sut, "Health", () => _sut.TakeDamage(10));
+           // Assert.PropertyChanged(_sut, "Health", () => _sut.TakeDamage(10));
+
+            using (var monitoredSubject = _sut.Monitor())
+            {
+                _sut.TakeDamage(10);
+
+                monitoredSubject.Should().RaisePropertyChangeFor(p => p.Health);
+                //long form 
+                //monitoredSubject.Should().Raise("PropertyChanged").WithSender(_sut).WithArgs<PropertyChangedEventArgs>(args => args.PropertyName == "Health");
+            }
+            
         }
 
         [Theory]
@@ -156,7 +208,8 @@ namespace GameEngine.Test
         public void TakeDamage(int damage, int expectedHealth)
         {
             _sut.TakeDamage(damage);
-            Assert.Equal(expectedHealth, _sut.Health);
+            //Assert.Equal(expectedHealth, _sut.Health);
+            _sut.Health.Should().Equals(expectedHealth);
         }
 
 

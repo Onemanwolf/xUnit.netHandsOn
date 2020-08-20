@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Xunit;
 
 namespace GameEngine.Test
@@ -15,7 +16,8 @@ namespace GameEngine.Test
 
             sut.TakeDamage(damage);
 
-            Assert.Equal(expectedHealth, sut.Health);
+           // Assert.Equal(expectedHealth, sut.Health);
+            sut.Should().Equals(expectedHealth);
         }
 
         [Theory]
@@ -27,7 +29,8 @@ namespace GameEngine.Test
 
             sut.TakeDamage(damage);
 
-            Assert.Equal(expectedHealth, sut.Health);
+           // Assert.Equal(expectedHealth, sut.Health);
+            sut.Should().Equals(expectedHealth);
         }
 
 
@@ -39,7 +42,9 @@ namespace GameEngine.Test
 
             sut.TakeDamage(damage);
 
-            Assert.Equal(expectedHealth, sut.Health);
+            //Assert.Equal(expectedHealth, sut.Health);
+            sut.Should().Equals(expectedHealth);
+            
         }
 
 
@@ -51,7 +56,8 @@ namespace GameEngine.Test
 
             sut.TakeDamage(damage);
 
-            Assert.Equal(expectedHealth, sut.Health);
+           // Assert.Equal(expectedHealth, sut.Health);
+            sut.Health.Should().Equals(expectedHealth);
         }
 
 

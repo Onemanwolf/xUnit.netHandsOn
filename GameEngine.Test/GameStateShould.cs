@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using FluentAssertions;
+using Xunit;
 using Xunit.Abstractions;
 
 namespace GameEngine.Test
@@ -33,6 +34,8 @@ namespace GameEngine.Test
 
             Assert.Equal(expectedHealthAfterEarthquake, player1.Health);
             Assert.Equal(expectedHealthAfterEarthquake, player2.Health);
+            player1.Health.Equals(expectedHealthAfterEarthquake);
+            player2.Health.Equals(expectedHealthAfterEarthquake);
         }
 
         [Fact]
@@ -48,7 +51,8 @@ namespace GameEngine.Test
 
             _gameStateFixture.State.Reset();
 
-            Assert.Empty(_gameStateFixture.State.Players);            
+            Assert.Empty(_gameStateFixture.State.Players);
+            _gameStateFixture.State.Players.Should().BeEmpty();
         }
     }
 }

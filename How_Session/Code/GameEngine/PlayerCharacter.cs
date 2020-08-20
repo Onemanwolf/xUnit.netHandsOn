@@ -13,6 +13,8 @@ namespace GameEngine
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
         public string Nickname { get; set; }
+
+        public DateTime DateCreated { get; set; }
         public int Health
         {
             get => _health;

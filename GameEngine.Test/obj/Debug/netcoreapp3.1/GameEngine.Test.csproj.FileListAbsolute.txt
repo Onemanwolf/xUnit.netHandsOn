@@ -193,8 +193,14 @@ C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Te
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.csprojAssemblyReference.cache
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.AssemblyInfoInputs.cache
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.AssemblyInfo.cs
-C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.csproj.CoreCompileInputs.cache
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.csproj.CopyComplete
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.dll
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.pdb
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.genruntimeconfig.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\bin\Debug\netcoreapp3.1\FluentAssertions.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\obj\Debug\netcoreapp3.1\GameEngine.Test.csproj.CoreCompileInputs.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine.Test\bin\Debug\netcoreapp3.1\Moq.dll

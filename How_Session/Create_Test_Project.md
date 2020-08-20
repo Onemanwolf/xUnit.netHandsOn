@@ -936,10 +936,11 @@ We have seen how we can share state across test methods in a test class but what
 
 ### Test Data Sources
 
-- Inline attribute (Local Developer)
+- Inline attribute (Local - Developer)
 - Property / field / method (Shareable - Developer)
-- Custom attribute (Shareable Developer)
+- Custom attribute (Shareable - Developer)
 - External Data (Sharable across - multiple test cases)
+    - Can be updated by non developers
 
 ## InlineData
 

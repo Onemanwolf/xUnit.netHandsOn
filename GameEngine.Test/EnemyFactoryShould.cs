@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentAssertions;
+using System;
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -20,7 +21,8 @@ namespace GameEngine.Test
         {
             var enemy = _sut.Create("Zombie");
 
-            Assert.IsType<NormalEnemy>(enemy);
+            //Assert.IsType<NormalEnemy>(enemy);
+            enemy.Should().BeOfType(typeof(NormalEnemy));
         }
 
         [Fact]
@@ -28,15 +30,17 @@ namespace GameEngine.Test
         {
             var enemy = _sut.Create("Zombie King", true);
 
-            Assert.IsType<BossEnemy>(enemy);
+           // Assert.IsType<BossEnemy>(enemy);
+            enemy.Should().BeOfType(typeof(BossEnemy), because: "Because the optional parameter of true was passed in");
         }
 
         [Fact]
         public void CreateBossEnemy_CastReturnedTypeExample()
         {
-            var enemy = _sut.Create("Zombie King", true);
-            var boss = Assert.IsType<BossEnemy>(enemy);
+            var boss = _sut.Create("Zombie King", true);
+
             //Assert.Equal("Zombie King", boss.Name);
+            boss.Name.Should().Equals("Zombie King");
         }
 
         [Fact]
@@ -44,7 +48,9 @@ namespace GameEngine.Test
         {
             var enemy = _sut.Create("Zombie");
 
-            Assert.IsAssignableFrom<Enemy>(enemy);
+           // Assert.IsAssignableFrom<Enemy>(enemy);
+            enemy.Should().BeAssignableTo(typeof(Enemy));
+            enemy.Should().BeAssignableTo<Enemy>();
         }
 
         [Fact]
@@ -53,7 +59,8 @@ namespace GameEngine.Test
             var enemy1 = _sut.Create("Zombie");
             var enemy2 = _sut.Create("Zombie");
 
-            Assert.NotSame(enemy1, enemy2);
+            //Assert.NotSame(enemy1, enemy2);
+            enemy1.Should().NotBeSameAs(enemy2);
         }
 
 
@@ -61,14 +68,23 @@ namespace GameEngine.Test
         public void NotAllowNullName()
         {
             
-            Assert.Throws<ArgumentNullException>(() => _sut.Create(null, false));
+            //Assert.Throws<ArgumentNullException>(() => _sut.Create(null, false));
+
+            Action act = () => _sut.Create(null, false);
+
+            act.Should().Throw<ArgumentNullException>();
+
+
         }
 
         [Fact]
         public void EnemyBossCreatedIsValidName()
         {
-          var ex =   Assert.Throws<EnemyCreationException>(() => _sut.Create("Zombie", true));
+            //var ex =   Assert.Throws<EnemyCreationException>(() => _sut.Create("Zombie", true));
 
+            Action act = () => _sut.Create("Zombie", true);
+
+            act.Should().Throw<EnemyCreationException>();
 
         }
 
