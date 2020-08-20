@@ -266,12 +266,9 @@ Lets head back over to the PlayerCharacterShould class.
         [Fact]
         public void HaveAtLeastOneKindOfSword()
         {
-            //Arrange
-            var sut = new PlayerCharacter();
-            //Act Default Values
 
-            //Assert
-            Assert.Contains(_sut.Weapons, weapons => weapons.Contains("Sword"));
+            //Assert.Contains(_sut.Weapons, weapons => weapons.Contains("Sword"));
+            _sut.Weapons.Should().Contain(weapons => weapons.Contains("Sword"));
         }
 ```
 
@@ -282,12 +279,8 @@ Lets head back over to the PlayerCharacterShould class.
         public void HaveNoEmptyDefaultWeapon()
         {
 
-            //Arrange
-            var sut = new PlayerCharacter();
-            //Act Default Values
-
-            //Assert
-            Assert.All(_sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
+             //Assert.All(_sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
+            _sut.Weapons.Should().NotContainNulls();
         }
 ```
 
@@ -346,11 +339,10 @@ We now will look at objects creation and type checking.
         [Fact]
         public void NormalEnemyCreated()
         {
-            var sut = new EnemyFactory();
+             var enemy = _sut.Create("Zombie");
 
-            var enemy = sut.Create("Zombie");
-
-            Assert.IsType<NormalEnemy>(enemy);
+            //Assert.IsType<NormalEnemy>(enemy);
+            enemy.Should().BeOfType(typeof(NormalEnemy));
         }
 ```
 
@@ -360,14 +352,10 @@ We now will look at objects creation and type checking.
         [Fact]
         public void EnemyBossCreated()
         {
-            //Arrange
-            var sut = new EnemyFactory();
+             var enemy = _sut.Create("Zombie King", true);
 
-            //Act
-            var enemy = sut.Create("Zombie King", true);
-
-            //Assert
-            Assert.IsType<BossEnemy>(enemy);
+           // Assert.IsType<BossEnemy>(enemy);
+            enemy.Should().BeOfType(typeof(BossEnemy), because: "Because the optional parameter of true was passed in");
         }
 ```
 
@@ -377,15 +365,10 @@ We now will look at objects creation and type checking.
         [Fact]
         public void CreateBossEnemy_CastReturnedTypeExample()
         {
-            //Arrange
-            var sut = new EnemyFactory();
+              var boss = _sut.Create("Zombie King", true);
 
-            //Act
-            var enemy = sut.Create("Zombie King", true);
-            var boss = Assert.IsType<BossEnemy>(enemy);
-
-            //Assert
-            Assert.Equal("Zombie King", boss.Name);
+            //Assert.Equal("Zombie King", boss.Name);
+            boss.Name.Should().Equals("Zombie King");
         }
 ```
 
@@ -395,13 +378,11 @@ We now will look at objects creation and type checking.
         [Fact]
         public void CreateBossEnemy_AssertAssignableType()
         {
-            //Arrange
-            var sut = new EnemyFactory();
+             var enemy = _sut.Create("Zombie");
 
-            //Act
-            var enemy = sut.Create("Zombie");
-
-            Assert.IsAssignableFrom<Enemy>(enemy);
+           // Assert.IsAssignableFrom<Enemy>(enemy);
+            enemy.Should().BeAssignableTo(typeof(Enemy));
+            enemy.Should().BeAssignableTo<Enemy>();
         }
 ```
 
@@ -412,14 +393,11 @@ We now will look at objects creation and type checking.
         public void CreateSeparateInstances()
         {
 
-            //Arrange
-            var sut = new EnemyFactory();
+            var enemy1 = _sut.Create("Zombie");
+            var enemy2 = _sut.Create("Zombie");
 
-            //Act
-            var enemy1 = sut.Create("Zombie");
-            var enemy2 = sut.Create("Zombie");
-
-            Assert.NotSame(enemy1, enemy2);
+            //Assert.NotSame(enemy1, enemy2);
+            enemy1.Should().NotBeSameAs(enemy2);
         }
 ```
 
@@ -434,13 +412,11 @@ Testing to insure exception are thrown and or handled.
         public void NotAllowNullName()
         {
 
-            //Arrange
-            var sut = new EnemyFactory();
+            //Assert.Throws<ArgumentNullException>(() => _sut.Create(null, false));
 
-            //Act lambda
+            Action act = () => _sut.Create(null, false);
 
-            //Assert
-            Assert.Throws<ArgumentNullException>(() => sut.Create(null, false));
+            act.Should().Throw<ArgumentNullException>();
         }
 ```
 
@@ -450,14 +426,11 @@ Testing to insure exception are thrown and or handled.
         [Fact]
         public void EnemyBossCreatedIsValidName()
         {
-            //Arrange
-            var sut = new EnemyFactory();
+            //var ex =   Assert.Throws<EnemyCreationException>(() => _sut.Create("Zombie", true));
 
-            //Act lambda
+            Action act = () => _sut.Create("Zombie", true);
 
-            //Assert
-
-          var ex =   Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", true));
+            act.Should().Throw<EnemyCreationException>();
 
 
         }
