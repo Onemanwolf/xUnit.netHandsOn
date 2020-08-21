@@ -12,3 +12,4 @@ C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\.vs\Game\v16\
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.csproj.CopyComplete
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.dll
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.genruntimeconfig.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\.vs\Game\v16\lut\0\i\GameEngine.Test\Debug\netcoreapp3.1\GameEngine.Test.csprojAssemblyReference.cache
