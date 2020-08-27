@@ -1,0 +1,13 @@
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.deps.json
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.runtimeconfig.json
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.runtimeconfig.dev.json
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\b\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\i\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.csprojAssemblyReference.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\i\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.AssemblyInfoInputs.cache
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\i\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.AssemblyInfo.cs
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\i\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.csproj.CopyComplete
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\i\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.dll
+C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\How_Session\Code\.vs\Game\v16\lut\0\i\GameEngine.Tests\Debug\netcoreapp3.1\GameEngine.Tests.genruntimeconfig.cache

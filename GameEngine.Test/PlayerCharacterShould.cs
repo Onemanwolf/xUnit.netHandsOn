@@ -150,6 +150,8 @@ namespace GameEngine.Test
         [Fact]
         public void NotHaveNickNameByDefault()
         {
+
+           
             //Assert.Null(_sut.Nickname);
             _sut.Nickname.Should().BeNull();
         }
@@ -162,7 +164,7 @@ namespace GameEngine.Test
 
 
             // Assert.Contains("Long Dow", _sut.Weapons);
-            // you assign local variables an use them in your assert
+            // you assign local variables an use them in your assertiona which make failures easier to understand
             listOfWeapons.Should().Contain("Long Bow");
         }
 
@@ -227,7 +229,7 @@ namespace GameEngine.Test
 
                 monitoredSubject.Should().RaisePropertyChangeFor(p => p.Health);
                 //long form 
-                //monitoredSubject.Should().Raise("PropertyChanged").WithSender(_sut).WithArgs<PropertyChangedEventArgs>(args => args.PropertyName == "Health");
+                monitoredSubject.Should().Raise("PropertyChanged").WithSender(_sut).WithArgs<PropertyChangedEventArgs>(args => args.PropertyName == "Health");
             }
 
         }
