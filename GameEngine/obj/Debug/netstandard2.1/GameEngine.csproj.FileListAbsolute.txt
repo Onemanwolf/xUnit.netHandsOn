@@ -15,3 +15,12 @@ C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\ob
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.dll
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.pdb
 C:\Users\tioleson\source\repos\XUnitDotNetHandsOn\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.csprojAssemblyReference.cache
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\bin\Debug\netstandard2.1\GameEngine.deps.json
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\bin\Debug\netstandard2.1\GameEngine.dll
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\bin\Debug\netstandard2.1\GameEngine.pdb
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.csprojAssemblyReference.cache
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.AssemblyInfoInputs.cache
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.AssemblyInfo.cs
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.csproj.CoreCompileInputs.cache
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.dll
+C:\XUNIT_Workshop\xUnit.netHandsOn\GameEngine\obj\Debug\netstandard2.1\GameEngine.pdb

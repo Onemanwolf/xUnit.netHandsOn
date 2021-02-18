@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YsIG7VsXtxMnToi0/CoJ3mWoNPoc4rltwkXaC2NAnTZEqaAXkhWWM9QiVqjTxjPS2BSczWTdEDLmtJsCU+yWyg==",
+  "dgSpecHash": "sDe8R13vgpHgkzETxkza7kW5BCbUjTO4i1rjjnls2AgqJqVB8EZ2rUSNZG0RNy+/tjHT9rR23ieQHhWP92iQCg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tioleson\\source\\repos\\XUnitDotNetHandsOn\\xUnit.netHandsOn\\How_Session\\Code\\GameEngine\\GameEngine.csproj",
+  "projectFilePath": "C:\\XUNIT_Workshop\\xUnit.netHandsOn\\How_Session\\Code\\GameEngine\\GameEngine.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
